@@ -1,0 +1,9 @@
+name: E2E Push-button
+run-name: Running E2E Tests
+on: [workflow_dispatch]
+jobs:
+  e2e:
+    uses: ./.github/workflows/e2e.yml
+    with:
+      push-button: true
+    secrets: inherit
