@@ -1,3 +1,4 @@
+import ApiSteps from "../api/api_steps"
 import { default_password, users } from "../fixtures/credentials"
 import { urls } from "../fixtures/pages"
 import { products } from "../fixtures/products"
@@ -14,6 +15,7 @@ const header = new HeaderComponent()
 const common_elements = new CommonElements()
 const products_page = new ProductsPage()
 const product_page = new Product()
+const api_steps = new ApiSteps()
 
 describe('Products page. Add new product', () => {
   beforeEach(() => {
@@ -42,6 +44,10 @@ describe('Products page. Add new product', () => {
   it('Add product modal from header Quick Add button', () => {
     header.clickOnQuickAddButton('Product')
     common_elements.verifyAddProductModalIsOpened()
+  })
+
+  afterEach(() => {
+    api_steps.logout(users.static_user.company)
   })
 
 })
