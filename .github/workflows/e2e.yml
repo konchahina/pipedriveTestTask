@@ -1,0 +1,39 @@
+name: E2E Run
+on: 
+  workflow_call:
+    inputs:
+      push-button:
+        description: 'Push button to run Cypress tests'
+        required: true
+        type: boolean
+
+jobs:
+  cypress-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: 'Push-button run'
+        uses: cypress-io/github-action@v5
+        if: ${{inputs.push-button}}
+        id: cypress-pushbutton-run
+        with:
+          browser: chrome
+          install: false
+          spec: cypress/e2e/**/*.cy.ts
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+          CYPRESS_DEFAULT_PASSWORD: ${{secrets.DEFAULT_PASSWORD}}
+
+      - name: Artifacts
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-artifacts-${{ github.sha }}
+          path: ./.cypress
+
+          
