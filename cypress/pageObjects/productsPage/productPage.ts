@@ -16,11 +16,13 @@ class Product extends BasePage {
             restoreTheProductButton: '[data-testid="restore-product-button"]',
 
         },
+        
         sidebarArea: {
             detailsElement: '[data-testid="fields-list-row"]',
             detailsElementName: '[data-testid="field-name"]',
             detailsElementValue: '~[data-testid="fields-list-row-field-components"]',
         },
+
         mainArea: {
             pricesRow: '[data-testid="price-row"]',
             priceRowElement: '[class*="cui5-spacing"]'

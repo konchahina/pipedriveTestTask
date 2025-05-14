@@ -9,8 +9,7 @@ class ProductsPage extends BasePage {
             tableCell: '[data-testid="expandable-cell"]',
             tableRow: '[role="row"]:not([type="head"])',
             editButton: '[data-testid="cell-edit"]'
-        },
-        
+        }, 
     }
 
     clickOnProductButton() {

@@ -28,8 +28,8 @@ class CommonElements extends BasePage {
     waitForPageToLoad() {
         this.elementShouldNotBeVisible(this.selectors.loadSpinner) 
         /**
-         * this should be changed for some request waiting using cy.intersept, 
-         * but I need to be more familiar with app to determine universal request for any page
+         * this could be changed to waiting for some request using cy.intersept, 
+         * but I need to be more familiar with app to determine a request that will work for all pages
          */
     }
     

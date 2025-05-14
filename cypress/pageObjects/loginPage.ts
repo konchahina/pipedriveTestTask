@@ -15,6 +15,5 @@ class LoginPage extends BasePage {
         this.clickOnElement(this.selectors.loginForm.logInButton)
     }
 
-
 }
 export default LoginPage;
