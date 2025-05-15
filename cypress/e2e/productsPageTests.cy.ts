@@ -17,14 +17,14 @@ const products_page = new ProductsPage()
 const product_page = new Product()
 const api_steps = new ApiSteps()
 
-describe('Products page. Add new product', () => {
+describe('Products page. Add new product modal', () => {
   beforeEach(() => {
     cy.visit(`https://${users.static_user.company}.pipedrive.com/pipeline`)
     login_page.fillLoginFormAndLogin(users.static_user.email, default_password)
     common_elements.waitForPageToLoad()
     
   })
-  it('Adding new product via +Product button', () => {
+  it('Add product modal via +Product button. Adding new product ', () => {
     sidebar.clickOnSidebarItemByText('Products', urls.productsPage.url)
     products_page.clickOnProductButton()
     common_elements.fullfillAddProductForm(products.product1.name, products.product1.product_code, products.product1.category, products.product1.unit, products.product1.billing_frequency, products.product1.unit_price, products.product1.currency.name, products.product1.tax)
@@ -41,8 +41,14 @@ describe('Products page. Add new product', () => {
     products_page.verifyProductIsNotPresent(products.product1.name)
   })
 
-  it('Add product modal from header Quick Add button', () => {
-    header.clickOnQuickAddButton('Product')
+  it('Add product modal from header Quick Add menu', () => {
+    header.clickOnQuickAddButtonAndSelectOption('Product')
+    common_elements.verifyAddProductModalIsOpened()
+  })
+
+  it('Add product modal from header Quick Add shortcut', () => {
+    header.openQuickAddMenu()
+    header.pickQuickAddMenuItemByShortkey('r')
     common_elements.verifyAddProductModalIsOpened()
   })
 

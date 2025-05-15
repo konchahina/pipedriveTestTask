@@ -21,6 +21,10 @@ class BasePage {
         return cy.get(selector, { timeout: timeout }).eq(index).clear().type(expected_text)
     }
 
+    pressKey(key_to_press: string) {
+        return cy.get('body').type(key_to_press)
+    }
+
     goToPreviousPage(timeout = this.defaultTimeoutValue) {
         cy.go('back', { timeout: timeout })
     }
